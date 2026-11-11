@@ -173,7 +173,7 @@ function App() {
                 <span>For your brand</span>
                 <h3>Private<br /><em>Label</em></h3>
                 <p>White-label and private-label ice cream manufacturing from Rajadhani’s in-house production facility.</p>
-                <a className="text-link" href="mailto:hello@rajadhaniicecreams.com?subject=Private%20label%20enquiry">Start a conversation <Arrow /></a>
+                <a className="text-link" href="mailto:rajadhanicreams@gmail.com?subject=Private%20label%20enquiry">Start a conversation <Arrow /></a>
               </div>
               <div className="offer-orbit" />
             </article>
@@ -183,7 +183,7 @@ function App() {
                 <span>For your business</span>
                 <h3>Supply<br /><em>&amp; distribution</em></h3>
                 <p>Reliable ice cream supply and distribution for retailers, supermarkets and business partners.</p>
-                <a className="text-link" href="mailto:hello@rajadhaniicecreams.com?subject=Supply%20and%20distribution%20enquiry">Partner with us <Arrow /></a>
+                <a className="text-link" href="mailto:rajadhanicreams@gmail.com?subject=Supply%20and%20distribution%20enquiry">Partner with us <Arrow /></a>
               </div>
               <div className="offer-orbit" />
             </article>
@@ -198,7 +198,7 @@ function App() {
                   <li>Pop-up stalls</li>
                   <li>Live juice counters</li>
                 </ul>
-                <a className="text-link" href="mailto:hello@rajadhaniicecreams.com?subject=Events%20and%20catering%20enquiry">Plan your event <Arrow /></a>
+                <a className="text-link" href="mailto:rajadhanicreams@gmail.com?subject=Events%20and%20catering%20enquiry">Plan your event <Arrow /></a>
               </div>
               <div className="offer-orbit" />
             </article>
@@ -322,7 +322,7 @@ function App() {
       )}
 
       <footer className="footer">
-        <div className="container footer-top"><div className="footer-logo">Rajadhani<span>✦</span></div><div className="footer-links"><a href="#story">Our story</a><a href="#flavors">Menu</a><a href="#offers">What we do</a><a href="#visit">Find us</a></div><div className="socials"><a className="social-link social-instagram" href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Follow Rajadhani Ice Creams on Instagram"><InstagramIcon /><span>Instagram</span></a><a className="social-link social-email" href="mailto:hello@rajadhaniicecreams.com" aria-label="Email Rajadhani Ice Creams"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.7" /><path d="m4 7 8 6 8-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><span>Email us</span></a></div></div>
+        <div className="container footer-top"><div className="footer-logo">Rajadhani<span>✦</span></div><div className="footer-links"><a href="#story">Our story</a><a href="#flavors">Menu</a><a href="#offers">What we do</a><a href="#visit">Find us</a></div><div className="socials"><a className="social-link social-instagram" href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Follow Rajadhani Ice Creams on Instagram"><InstagramIcon /><span>Instagram</span></a><a className="social-link social-email" href="mailto:rajadhanicreams@gmail.com" aria-label="Email Rajadhani Ice Creams"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.7" /><path d="m4 7 8 6 8-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg><span>Email us</span></a></div></div>
         <div className="container footer-bottom"><span>© 2026 Rajadhani Ice Creams</span><span>Crafting sweet moments. Serving every occasion. Since 1993.</span></div>
       </footer>
       <a className="whatsapp-float" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Chat with Rajadhani Ice Creams on WhatsApp">
