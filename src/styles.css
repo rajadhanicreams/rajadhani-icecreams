@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Satisfy&display=swap');
 
 :root { --ink:#153d3f; --mint:#a8dfe0; --cream:#f7f3e9; --coral:#f29579; --line:rgba(21,61,63,.18); }
 * { box-sizing:border-box; }
@@ -145,7 +145,7 @@ em { font-style:italic; }
 @media (max-width:720px) { .container{width:calc(100% - 40px)}.nav-links{display:none}.nav-links.is-open{display:flex;position:absolute;top:75px;left:20px;right:20px;padding:24px;background:var(--cream);flex-direction:column;align-items:flex-start;box-shadow:0 8px 20px #153d3f20}.menu-toggle{display:block}.hero{min-height:730px}.hero-copy{padding-top:155px}.hero-title{font-size:76px;letter-spacing:-4px}.hero-intro{margin-top:30px}.hero-scoop{right:-70px;bottom:15px;transform:scale(.7)!important}.hero-sticker{right:11%;bottom:52px;transform:scale(.75) rotate(12deg)}.hero-orbit{right:-70%;top:120px}.orbit-two{right:-40%}.section-pad{padding:90px 0}.story-grid{grid-template-columns:1fr;gap:25px}.story-orb{margin:15px 0 0 auto;width:140px;height:140px}.story-orb span{font-size:28px}.section-heading{display:block;margin-bottom:40px}.heading-note{margin-top:20px}.flavor-layout{grid-template-columns:1fr;gap:35px}.flavor-feature{height:390px}.feature-icecream{right:-5px;transform:scale(.8) rotate(-9deg);transform-origin:bottom right}.visit-inner{display:block}.visit-circle{width:280px;height:280px;margin:0 auto 65px}.visit-circle strong{font-size:39px}.visit-details h2{font-size:56px}.footer-top{flex-wrap:wrap;gap:30px}.footer-links{order:3;width:100%;justify-content:space-between}.footer-bottom{align-items:flex-start;gap:20px;line-height:1.5}.footer-bottom span:last-child{text-align:right} }
 
 /* Dark, product-led visual language from the reference direction. */
-:root { --ink:#f4efe5; --cream:#101011; --mint:#171719; --coral:#c77a4b; --line:rgba(244,239,229,.16); }
+:root { --ink:#fffdf3; --cream:#101011; --mint:#8bd1d1; --coral:#f0d2d3; --line:rgba(255,253,243,.18); }
 body { background:#101011; color:var(--ink); }
 .nav-wrap { background:linear-gradient(#101011dd, transparent); pointer-events:none; }
 .nav { pointer-events:auto; }
@@ -354,13 +354,70 @@ body { background:#101011; color:var(--ink); }
   }
   .nav-links.is-open > a.nav-order::before { content:none; }
   .nav-links.is-open > a.nav-order .arrow { display:inline-block; order:2; width:20px; height:20px; margin-left:auto; }
-  .menu-toggle { position:relative; z-index:3; width:42px; height:42px; border:1px solid #ffffff35; border-radius:50%; background:#101011b8; }
-  .menu-toggle span { position:absolute; left:8px; top:14px; width:22px; margin:0; transition:transform .25s,top .25s; }
-  .menu-toggle span + span { top:22px; }
-  .menu-toggle.is-open span { top:18px; transform:rotate(45deg); }
-  .menu-toggle.is-open span + span { transform:rotate(-45deg); }
+  .menu-toggle { position:relative; z-index:3; display:block; width:42px; height:42px; padding:0; border:1px solid #ffffff35; border-radius:50%; background:#101011b8; }
+  .menu-toggle span { position:absolute; left:50%; top:50%; width:20px; margin:0; transform:translate(-50%,calc(-50% - 4px)); transition:transform .25s; }
+  .menu-toggle span + span { transform:translate(-50%,calc(-50% + 4px)); }
+  .menu-toggle.is-open span { transform:translate(-50%,-50%) rotate(45deg); }
+  .menu-toggle.is-open span + span { transform:translate(-50%,-50%) rotate(-45deg); }
 }
 @keyframes mobile-menu-enter {
   from { opacity:0; transform:translateY(-12px); }
   to { opacity:1; transform:translateY(0); }
+}
+
+/* Brand typography and pastel accents drawn from the Rajadhani logo artwork. */
+.hero-title em,
+.story-content h2 em,
+.section-heading h2 em,
+.visit-details h2 em,
+.offers-heading h2 em,
+.offer-card-content h3 em,
+.store-modal h2 em {
+  font-family:'Satisfy',cursive;
+  font-weight:400;
+  letter-spacing:0;
+  color:var(--mint);
+}
+.hero-copy .eyebrow,
+.product-label > span,
+.product-rail span,
+.offer-card-content > span,
+.offer-card-number {
+  color:#fff2a8;
+}
+.hero-intro { color:#e4e0d6; }
+.story { color:#201e1c; }
+.story .eyebrow,
+.story .text-link { color:#376e6d; }
+.story-content > p { color:#5f5b54; }
+.story-content h2 em { color:#397f7d; }
+.story-orb { background:#8bd1d1; border-color:#fffdf3; color:#193e3e; }
+.section-heading h2 em { color:#f0d2d3; }
+.flavors-section .flavor-row:hover,
+.flavors-section .flavor-row.active { color:var(--flavor-accent); }
+.flavor-index { color:#e6dfd0; }
+.product-rail span { color:#fff2a8; }
+.visit-details .eyebrow { color:#fff2a8; }
+.visit-details h2 em { color:#8bd1d1; }
+.visit-details > p:not(.eyebrow) { color:#eee6db; }
+.visit-status { color:#e6dfd0; }
+.visit-status i { background:#fff2a8; box-shadow:0 0 10px #fff2a8; }
+.visit .dark-button { background:#8bd1d1; color:#152c2c; }
+.store-modal .eyebrow,
+.store-map-heading span,
+.store-map-card > a { color:#fff2a8; }
+.story-orb small { color:#193e3e; }
+.instagram-feature-copy .eyebrow,
+.instagram-feature-link small { color:#f0d2d3; }
+.instagram-feature-mark { color:#fffdf3; border-color:#f0d2d399; background:linear-gradient(145deg,#8bd1d177,#f0d2d355); }
+.instagram-feature-link { border-color:#f0d2d377; }
+.google-rating { border-color:#fff2a877; }
+.footer-logo span { color:#f0d2d3; }
+.socials a:hover { background:#8bd1d1; color:#101011; }
+.nav-links.is-open > a::before,
+.nav-links.is-open::before { color:#fff2a8; }
+.nav-links.is-open > a.nav-order { border-color:#8bd1d199; color:#8bd1d1; background:#8bd1d114; }
+.nav-links.is-open::after { color:#e4e0d6; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-links.is-open { animation:none; }
 }
