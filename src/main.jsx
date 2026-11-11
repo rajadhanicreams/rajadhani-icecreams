@@ -23,8 +23,12 @@ const flavors = [
   { name: 'Caramel Brownie', note: 'A sundae made for treats', color: '#f2b3b3', accent: '#d86672', emoji: '🍫', video: '/sample-1.mp4', videoPosition: 'center 68%', theme: { background: '#4d202d', text: '#ffe9e8', muted: '#d8a8ad', line: '#f2b3b340', glow: '#ed7e9233' } },
 ];
 
-function Arrow({ direction = 'right' }) {
-  return <span className={`arrow arrow-${direction}`} aria-hidden="true">↗</span>;
+function Arrow({ direction = 'up-right', className = '' }) {
+  return (
+    <svg className={`arrow arrow-${direction} ${className}`.trim()} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="m4 12 8-8M6.5 4H12v5.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 function App() {
@@ -227,7 +231,7 @@ function App() {
             <div className="flavor-list">
               {flavors.map((flavor, index) => (
                 <button key={flavor.name} className={`flavor-row ${activeFlavor === index ? 'active' : ''}`} onClick={() => setActiveFlavor(index)}>
-                  <span className="flavor-index">0{index + 1}</span><span>{flavor.name}</span><span className="flavor-arrow">↗</span>
+                  <span className="flavor-index">0{index + 1}</span><span>{flavor.name}</span><Arrow className="flavor-arrow" />
                 </button>
               ))}
             </div>
@@ -268,7 +272,7 @@ function App() {
             <a className="google-rating" href={googleReviewsUrl} target="_blank" rel="noreferrer" aria-label="See Rajadhani Ice Creams' Google rating of 4.3 out of 5 from 10 reviews">
               <span className="google-rating-mark" aria-hidden="true">G</span>
               <span className="google-rating-score">4.3<span>/5</span></span>
-              <span className="google-rating-copy"><strong>Google rating</strong><small>Based on 10 reviews · See reviews ↗</small></span>
+              <span className="google-rating-copy"><strong>Google rating</strong><small>Based on 10 reviews · See reviews <Arrow /></small></span>
             </a>
             <button className="pill-button dark-button" type="button" onClick={() => setStoresOpen(true)}>Find a store <Arrow /></button>
           </div>
@@ -286,7 +290,7 @@ function App() {
           </div>
           <a className="instagram-feature-link" href={instagramUrl} target="_blank" rel="noreferrer">
             <span><small>FOLLOW US ON INSTAGRAM</small><strong>@rajadhaniicecream</strong></span>
-            <span className="instagram-feature-arrow" aria-hidden="true">↗</span>
+            <Arrow className="instagram-feature-arrow" />
           </a>
         </div>
       </section>
