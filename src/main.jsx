@@ -124,8 +124,9 @@ function App() {
           <h1 className="hero-title reveal reveal-delay-1">A little<br /><em>joy</em> in<br />every scoop.</h1>
           <p className="hero-intro reveal reveal-delay-2">A neighbourhood favourite from Thrippunithura, serving scoops, sips and celebrations for over 30 years.</p>
           <button className="pill-button reveal reveal-delay-3" onClick={scrollToProducts}>Explore our menu <Arrow /></button>
+          <div className="scroll-cue"><span>Scroll to wander</span><i /></div>
         </div>
-        <div className="hero-product" style={{ transform: `translateY(${scrollY * 0.12}px) rotateY(${scrollY * 0.018}deg)` }}>
+        <div className="hero-product" style={{ transform: `translateY(${scrollY * 0.12}px) rotateY(${scrollY * 0.018}deg) scale(var(--hero-product-scale, 1))` }}>
           <div className="product-aura" />
           <span className="float-dot dot-a">✦</span><span className="float-dot dot-b">•</span><span className="float-dot dot-c">✦</span>
           <div className="scoop-shadow" />
@@ -137,7 +138,6 @@ function App() {
           <div className="product-label"><span>01</span><strong>Rajadhani<br />signature</strong><small>serving smiles / 1993</small></div>
         </div>
         <div className="hero-sticker"><span>EST.</span><strong>1993</strong><span>MADE WITH<br />HEART</span></div>
-        <div className="scroll-cue"><span>Scroll to wander</span><i /></div>
       </section>
 
       <section id="story" className="story section-pad">
