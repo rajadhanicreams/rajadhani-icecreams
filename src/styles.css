@@ -273,7 +273,7 @@ body { background:#101011; color:var(--ink); }
 .instagram-feature-mark svg { width:42px; height:42px; }
 .instagram-feature-copy .eyebrow { margin-bottom:15px; color:#e8ad92; }
 .instagram-feature-copy h2 { margin:0; font:500 clamp(40px,5vw,62px)/.9 'DM Sans',sans-serif; letter-spacing:-3px; }
-.instagram-feature-copy h2 em { font-family:'Playfair Display',serif; font-weight:500; }
+.instagram-feature-copy h2 em { font-family:'Playfair Display',serif; font-weight:500; color:var(--blush); }
 .instagram-feature-copy > p:last-child { max-width:410px; margin:17px 0 0; color:#c8b7b0; font-size:12px; line-height:1.6; }
 .instagram-feature-link { display:flex; align-items:center; gap:28px; min-width:280px; padding:19px 21px; border:1px solid #e8ad9266; border-radius:12px; color:#f7eee7; background:#ffffff0b; transition:transform .2s,background .2s,border-color .2s; }
 .instagram-feature-link:hover { transform:translateY(-3px); border-color:#f4c2a6; background:#ffffff16; }
