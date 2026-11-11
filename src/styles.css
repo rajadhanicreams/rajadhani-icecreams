@@ -394,7 +394,7 @@ body { background:#101011; color:var(--ink); }
 .offer-card-number {
   color:#fff2a8;
 }
-.hero-intro { color:#e4e0d6; margin-left:20px; }
+.hero-intro { color:#e4e0d6; }
 .story { color:#201e1c; }
 .story .eyebrow,
 .story .text-link { color:#376e6d; }
@@ -431,5 +431,5 @@ body { background:#101011; color:var(--ink); }
   .nav-links.is-open { animation:none; }
 }
 @media (max-width:720px) {
-  .hero-intro { width:calc(100% - 20px); }
+  .hero-intro { width:calc(100% - 20px); margin-left:20px; }
 }
