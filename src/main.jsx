@@ -121,7 +121,7 @@ function App() {
         <div className="hero-orbit orbit-two" />
         <div className="hero-copy container">
           <p className="eyebrow reveal">Crafting sweet moments since 1993</p>
-          <h1 className="hero-title reveal reveal-delay-1">A little<br /><em>joy</em> in<br />every scoop.</h1>
+          <h1 className="hero-title reveal reveal-delay-1">A little<br /><em>joy</em> in<br />every <span className="hero-scoop-word">scoop.</span></h1>
           <p className="hero-intro reveal reveal-delay-2">A neighbourhood favourite from Thrippunithura, serving scoops, sips and celebrations for over 30 years.</p>
           <button className="pill-button reveal reveal-delay-3" onClick={scrollToProducts}>Explore our menu <Arrow /></button>
           <div className="scroll-cue"><span>Scroll to wander</span><i /></div>
