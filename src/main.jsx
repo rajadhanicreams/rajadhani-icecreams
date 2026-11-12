@@ -168,7 +168,7 @@ function App() {
               <small>THRIPPUNITHURA · 1993</small>
             </div>
             <div className="founder-note-copy">
-              <p className="eyebrow">Founder’s message <span>TRANSMISSION / 001</span></p>
+              <p className="eyebrow">Founder’s message</p>
               <blockquote>“Rajadhani began with a simple dream: to make every visit a little happier. Since 1993, your smiles have helped that dream grow—one scoop, one gathering, one sweet memory at a time. Thank you for making Rajadhani part of your lives.”</blockquote>
               <p className="founder-note-signoff">With gratitude, <span>Radhakrishnan L, Founder @ Rajadhani Ice Creams</span></p>
             </div>
