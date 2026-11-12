@@ -17,10 +17,14 @@ function InstagramIcon() {
 }
 
 const flavors = [
-  { name: 'Royal Falooda', note: 'A Rajadhani favourite', color: '#b5e3d6', accent: '#5aa798', emoji: '🥤', video: '/sample-1.mp4', videoPosition: 'center 38%', theme: { background: '#173b3b', text: '#e4f6ed', muted: '#a5c9c0', line: '#b5e3d633', glow: '#72d4c733' } },
-  { name: 'Pulpy Grape Juice', note: 'Our special pulpy pour', color: '#c9a4df', accent: '#9365aa', emoji: '🍇', video: '/sample-1.mp4', videoPosition: 'center 55%', theme: { background: '#382447', text: '#f5eafa', muted: '#c7afd1', line: '#c9a4df40', glow: '#c39bdd33' } },
-  { name: 'Raj Delite', note: 'A signature sundae', color: '#d8b0a0', accent: '#845345', emoji: '🍨', video: '/sample-2.mp4', videoPosition: 'center 50%', theme: { background: '#271719', text: '#f9e6d9', muted: '#c19c91', line: '#d8b0a033', glow: '#c17b6333' } },
-  { name: 'Caramel Brownie', note: 'A sundae made for treats', color: '#f2b3b3', accent: '#d86672', emoji: '🍫', video: '/sample-1.mp4', videoPosition: 'center 68%', theme: { background: '#4d202d', text: '#ffe9e8', muted: '#d8a8ad', line: '#f2b3b340', glow: '#ed7e9233' } },
+  { name: 'Death By Chocolate', note: 'A rich sundae for chocolate lovers', image: '/products/death-by-chocolate.webp', color: '#6f3c23', accent: '#d49a69', theme: { background: '#332019', text: '#f9e8d5', muted: '#c6a58e', line: '#d49a6933', glow: '#d49a6933' } },
+  { name: 'Karibean Cocktail', note: 'A chocolate sundae topped with cherry', image: '/products/karibean-cocktail.webp', color: '#93634e', accent: '#e2b28f', theme: { background: '#342923', text: '#f5e8dc', muted: '#c8b6a7', line: '#e2b28f33', glow: '#e2b28f33' } },
+  { name: 'Rajadhani Special', note: 'Three scoops with a crunchy topping', image: '/products/rajadhani-special.webp', color: '#c78d36', accent: '#f0ce84', theme: { background: '#3b3020', text: '#fff2d6', muted: '#d2bd94', line: '#f0ce8433', glow: '#f0ce8433' } },
+  { name: 'Berry Falooda', note: 'A fruity falooda layered with berries', image: '/products/berry-falooda.webp', color: '#d8818d', accent: '#f2b3bd', theme: { background: '#47282c', text: '#ffe8e5', muted: '#d5a9a7', line: '#f2b3bd33', glow: '#f2b3bd33' } },
+  { name: 'Screwdriver', note: 'A tall, indulgent sundae', image: '/products/screwdriver.webp', color: '#7b492c', accent: '#d99c6b', theme: { background: '#332319', text: '#f9e8d5', muted: '#c5a58e', line: '#d99c6b33', glow: '#d99c6b33' } },
+  { name: 'Watermelon Candy', note: 'A cool watermelon treat', image: '/products/watermelon-candy.webp', color: '#d75a69', accent: '#f4a0a5', theme: { background: '#3d2026', text: '#ffe8e5', muted: '#d5a6a7', line: '#f4a0a533', glow: '#f4a0a533' } },
+  { name: 'Magic Lime', note: 'A refreshing lime ice pop', image: '/products/magic-lime.webp', color: '#4eb8d7', accent: '#9de6ef', theme: { background: '#173443', text: '#e3f7fa', muted: '#a4cbd2', line: '#9de6ef33', glow: '#9de6ef33' } },
+  { name: 'Choco Crunch', note: 'Chocolate crunch to enjoy at home', image: '/products/choco-crunch.webp', color: '#2359bd', accent: '#8bb6ff', theme: { background: '#18223d', text: '#e8eeff', muted: '#a8b8d5', line: '#8bb6ff33', glow: '#8bb6ff33' } },
 ];
 
 function Arrow({ direction = 'up-right', className = '' }) {
@@ -225,23 +229,19 @@ function App() {
               <p className="eyebrow">Sundaes, sips &amp; more</p>
               <h2>Favourites for<br /><em>every mood.</em></h2>
             </div>
-            <p className="heading-note">Royal Falooda, honey grape juice, rose milk &amp; badam milk. Sundaes: Screwdriver, Napoleon’s Tower &amp; Rocky Road.</p>
+            <p className="heading-note">Meet eight Rajadhani favourites, from rich chocolate sundaes to refreshing fruit treats.</p>
           </div>
           <div className="flavor-layout">
             <div className="flavor-list">
               {flavors.map((flavor, index) => (
-                <button key={flavor.name} className={`flavor-row ${activeFlavor === index ? 'active' : ''}`} onClick={() => setActiveFlavor(index)}>
+                <button key={flavor.name} className={`flavor-row ${activeFlavor === index ? 'active' : ''}`} style={{ '--flavor-accent': flavor.accent }} onClick={() => setActiveFlavor(index)}>
                   <span className="flavor-index">0{index + 1}</span><span>{flavor.name}</span><Arrow className="flavor-arrow" />
                 </button>
               ))}
             </div>
             <div className="flavor-feature" style={{ '--flavor-color': flavors[activeFlavor].color, '--flavor-accent': flavors[activeFlavor].accent }}>
-              <video key={flavors[activeFlavor].name} className="section-video feature-video" autoPlay muted loop playsInline style={{ objectPosition: flavors[activeFlavor].videoPosition }}>
-                <source src={flavors[activeFlavor].video} type="video/mp4" />
-              </video>
+              <img className="feature-image" src={flavors[activeFlavor].image} alt={flavors[activeFlavor].name} />
               <div className="feature-text"><span>RAJADHANI FAVOURITE</span><h3>{flavors[activeFlavor].name}</h3><p>{flavors[activeFlavor].note}</p></div>
-              <div className="feature-icecream"><div className="feature-scoop">{flavors[activeFlavor].emoji}</div><div className="feature-cup">R</div></div>
-              <div className="feature-shadow" />
               <span className="feature-number">0{activeFlavor + 1}</span>
             </div>
           </div>
