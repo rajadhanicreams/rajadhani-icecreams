@@ -476,7 +476,7 @@ body { background:#101011; color:var(--ink); }
     border:0;
     border-radius:0;
     filter:saturate(.88);
-    transform:scale(1.19) translate(-8%,-15%);
+    transform:scale(1.13) translate(-5%,-15%);
   }
   .founder-note-portrait span,.founder-note-portrait small { left:16px; }
   .founder-note-portrait span { top:16px; z-index:2; }
