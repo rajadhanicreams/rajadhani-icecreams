@@ -161,6 +161,18 @@ function App() {
             <div className="story-product-copy"><span>MADE IN KUREEKAD</span><strong>Local roots.<br /><em>Sweet moments.</em></strong><small>Serving Thrippunithura since 1993</small></div>
             <div className="story-orb"><span>100%</span><small>vegetarian<br />offerings</small></div>
           </div>
+          <article className="founder-note">
+            <div className="founder-note-portrait">
+              <img src="/founder-new.webp" alt="Founder of Rajadhani Ice Creams" />
+              <span>RJD / FOUNDER</span>
+              <small>THRIPPUNITHURA · 1993</small>
+            </div>
+            <div className="founder-note-copy">
+              <p className="eyebrow">Founder’s message <span>TRANSMISSION / 001</span></p>
+              <blockquote>“Rajadhani began with a simple dream: to make every visit a little happier. Since 1993, your smiles have helped that dream grow—one scoop, one gathering, one sweet memory at a time. Thank you for making Rajadhani part of your lives.”</blockquote>
+              <p className="founder-note-signoff">With gratitude, <span>Radhakrishnan L, Founder @ Rajadhani Ice Creams</span></p>
+            </div>
+          </article>
         </div>
       </section>
 
