@@ -226,6 +226,42 @@ function App() {
         </div>
       </section>
 
+      <section className="category-showcase section-pad" aria-labelledby="category-showcase-title">
+        <div className="container">
+          <div className="category-showcase-heading">
+            <p className="eyebrow">Find your kind of joy</p>
+            <h2 id="category-showcase-title">Three ways to<br /><em>make it sweet.</em></h2>
+            <p>From a classic sundae to a treat worth sharing, there’s a little Rajadhani joy for every kind of day.</p>
+          </div>
+          <div className="category-grid">
+            <article className="category-card category-card-sundae">
+              <div className="category-card-top"><span>01 / THE CLASSIC</span><span aria-hidden="true">✦</span></div>
+              <div className="category-card-copy">
+                <h3>Ice Cream<br /><em>Sundae</em></h3>
+                <p>A little extra joy, served by the scoop.</p>
+              </div>
+              <div className="category-card-orbit" aria-hidden="true" />
+            </article>
+            <article className="category-card category-card-family">
+              <div className="category-card-top"><span>02 / MADE TO SHARE</span><span aria-hidden="true">✦</span></div>
+              <div className="category-card-copy">
+                <h3>Family<br /><em>Packs</em></h3>
+                <p><strong>18 flavours</strong> to bring a little more joy to the table.</p>
+              </div>
+              <div className="category-card-orbit" aria-hidden="true" />
+            </article>
+            <article className="category-card category-card-novelties">
+              <div className="category-card-top"><span>03 / A FUN TWIST</span><span aria-hidden="true">✦</span></div>
+              <div className="category-card-copy">
+                <h3>Novel<span>ties.</span></h3>
+                <p>Playful frozen treats for wherever the day takes you.</p>
+              </div>
+              <div className="category-card-orbit" aria-hidden="true" />
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="flavors" className="flavors-section section-pad" ref={productRef} style={{
         '--section-bg': flavors[activeFlavor].theme.background,
         '--section-text': flavors[activeFlavor].theme.text,
