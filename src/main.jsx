@@ -1,5 +1,8 @@
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { getApps, initializeApp } from 'firebase/app';
+import { collection, getDocs, getFirestore } from 'firebase/firestore/lite';
+import { localProducts, normalizeProducts } from './products';
 import './styles.css';
 
 const whatsappUrl = 'https://wa.me/918217816199?text=Hi%20Rajadhani%2C%20I%27d%20like%20to%20know%20more.';
@@ -16,17 +19,6 @@ function InstagramIcon() {
   );
 }
 
-const flavors = [
-  { name: 'Death By Chocolate', note: 'A rich sundae for chocolate lovers', image: '/products/death-by-chocolate.webp', video: '/products/death-by-chocolate-video.mp4?v=2', color: '#6f3c23', accent: '#d49a69', theme: { background: '#332019', text: '#f9e8d5', muted: '#c6a58e', line: '#d49a6933', glow: '#d49a6933' } },
-  { name: 'Karibean Cocktail', note: 'A chocolate sundae topped with cherry', image: '/products/karibean-cocktail.webp', video: '/products/karibean-cocktail-video.mp4?v=2', color: '#93634e', accent: '#e2b28f', theme: { background: '#342923', text: '#f5e8dc', muted: '#c8b6a7', line: '#e2b28f33', glow: '#e2b28f33' } },
-  { name: 'Rajadhani Special', note: 'Three scoops with a crunchy topping', image: '/products/rajadhani-special.webp', video: '/products/rajadhani-special-video.mp4?v=2', color: '#c78d36', accent: '#f0ce84', theme: { background: '#3b3020', text: '#fff2d6', muted: '#d2bd94', line: '#f0ce8433', glow: '#f0ce8433' } },
-  { name: 'Berry Falooda', note: 'A fruity falooda layered with berries', image: '/products/berry-falooda.webp', video: '/products/berry-falooda-video.mp4?v=2', color: '#d8818d', accent: '#f2b3bd', theme: { background: '#47282c', text: '#ffe8e5', muted: '#d5a9a7', line: '#f2b3bd33', glow: '#f2b3bd33' } },
-  { name: 'Screwdriver', note: 'A tall, indulgent sundae', image: '/products/screwdriver.webp', video: '/products/screwdriver-video.mp4?v=2', color: '#7b492c', accent: '#d99c6b', theme: { background: '#332319', text: '#f9e8d5', muted: '#c5a58e', line: '#d99c6b33', glow: '#d99c6b33' } },
-  { name: 'Watermelon Candy', note: 'A cool watermelon treat', image: '/products/watermelon-candy.webp', video: '/products/watermelon-candy-video.mp4?v=2', color: '#d75a69', accent: '#f4a0a5', theme: { background: '#3d2026', text: '#ffe8e5', muted: '#d5a6a7', line: '#f4a0a533', glow: '#f4a0a533' } },
-  { name: 'Magic Lime', note: 'A refreshing lime ice pop', image: '/products/magic-lime.webp', video: '/products/magic-lime-video.mp4?v=2', color: '#4eb8d7', accent: '#9de6ef', theme: { background: '#173443', text: '#e3f7fa', muted: '#a4cbd2', line: '#9de6ef33', glow: '#9de6ef33' } },
-  { name: 'Choco Crunch', note: 'Chocolate crunch to enjoy at home', image: '/products/choco-crunch.webp', video: '/products/choco-crunch-video.mp4?v=2', color: '#2359bd', accent: '#8bb6ff', theme: { background: '#18223d', text: '#e8eeff', muted: '#a8b8d5', line: '#8bb6ff33', glow: '#8bb6ff33' } },
-];
-
 function Arrow({ direction = 'up-right', className = '' }) {
   return (
     <svg className={`arrow arrow-${direction} ${className}`.trim()} viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -38,9 +30,41 @@ function Arrow({ direction = 'up-right', className = '' }) {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFlavor, setActiveFlavor] = useState(0);
+  const [flavors, setFlavors] = useState(localProducts);
+  const [productError, setProductError] = useState('');
   const [storesOpen, setStoresOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const productRef = useRef(null);
+
+  useEffect(() => {
+    let active = true;
+    async function loadProducts() {
+      try {
+        const config = {
+          apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+          authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+          projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+          appId: import.meta.env.VITE_FIREBASE_APP_ID,
+        };
+        if (Object.values(config).some((value) => !value)) {
+          throw new Error('Firebase web configuration is missing.');
+        }
+        const app = getApps()[0] || initializeApp(config);
+        const snapshot = await getDocs(collection(getFirestore(app), 'products'));
+        const products = normalizeProducts(snapshot.docs.map((document) => document.data()));
+        if (active) {
+          setFlavors(products);
+          setActiveFlavor((current) => Math.min(current, products.length - 1));
+          setProductError('');
+        }
+      } catch (error) {
+        console.error('Unable to load products from Firestore:', error);
+        if (active) setProductError('Live products are unavailable. Showing the saved menu.');
+      }
+    }
+    void loadProducts();
+    return () => { active = false; };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -61,7 +85,7 @@ function App() {
     }, { threshold: 0.2 });
     videos.forEach((video) => observer.observe(video));
     return () => observer.disconnect();
-  }, [activeFlavor]);
+  }, [activeFlavor, flavors]);
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -277,20 +301,21 @@ function App() {
               <p className="eyebrow">Sundaes, sips &amp; more</p>
               <h2>Favourites for<br /><em>every mood.</em></h2>
             </div>
-            <p className="heading-note">Meet eight Rajadhani favourites, from rich chocolate sundaes to refreshing fruit treats.</p>
+            <p className="heading-note">Meet Rajadhani favourites, from rich chocolate sundaes to refreshing fruit treats.</p>
           </div>
+          {productError && <p role="status">{productError}</p>}
           <div className="flavor-layout">
             <div className="flavor-list">
               {flavors.map((flavor, index) => (
                 <button key={flavor.name} className={`flavor-row ${activeFlavor === index ? 'active' : ''}`} style={{ '--flavor-accent': flavor.accent }} onClick={() => setActiveFlavor(index)}>
-                  <span className="flavor-index">0{index + 1}</span><span>{flavor.name}</span><Arrow className="flavor-arrow" />
+                  <span className="flavor-index">{String(index + 1).padStart(2, '0')}</span><span>{flavor.name}</span><Arrow className="flavor-arrow" />
                 </button>
               ))}
             </div>
             <div className="flavor-feature" style={{ '--flavor-color': flavors[activeFlavor].color, '--flavor-accent': flavors[activeFlavor].accent }}>
               <video key={flavors[activeFlavor].name} className="section-video feature-video" src={flavors[activeFlavor].video} poster={flavors[activeFlavor].image} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
               <div className="feature-text"><span>RAJADHANI FAVOURITE</span><h3>{flavors[activeFlavor].name}</h3><p>{flavors[activeFlavor].note}</p></div>
-              <span className="feature-number">0{activeFlavor + 1}</span>
+              <span className="feature-number">{String(activeFlavor + 1).padStart(2, '0')}</span>
             </div>
           </div>
           <div className="product-rail">
