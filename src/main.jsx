@@ -27,6 +27,33 @@ function Arrow({ direction = 'up-right', className = '' }) {
   );
 }
 
+function ProductVideo({ product }) {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <>
+      <img className="feature-image" src={product.image} alt="" aria-hidden="true" />
+      <video
+        className={`section-video feature-video${playing ? ' is-playing' : ''}`}
+        src={product.video}
+        poster={product.image}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        onPlaying={() => setPlaying(true)}
+        onWaiting={() => setPlaying(false)}
+        onError={() => {
+          setPlaying(false);
+          console.error(`Unable to load video for ${product.name}.`);
+        }}
+      />
+    </>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFlavor, setActiveFlavor] = useState(0);
@@ -313,7 +340,7 @@ function App() {
               ))}
             </div>
             <div className="flavor-feature" style={{ '--flavor-color': flavors[activeFlavor].color, '--flavor-accent': flavors[activeFlavor].accent }}>
-              <video key={flavors[activeFlavor].name} className="section-video feature-video" src={flavors[activeFlavor].video} poster={flavors[activeFlavor].image} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
+              <ProductVideo key={`${flavors[activeFlavor].image}|${flavors[activeFlavor].video}`} product={flavors[activeFlavor]} />
               <div className="feature-text"><span>RAJADHANI FAVOURITE</span><h3>{flavors[activeFlavor].name}</h3><p>{flavors[activeFlavor].note}</p></div>
               <span className="feature-number">{String(activeFlavor + 1).padStart(2, '0')}</span>
             </div>
